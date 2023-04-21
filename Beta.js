@@ -1,4 +1,4 @@
-import { __uv$config } from './config.js';
+import { __uv$config } from './uv.config.js';
 
 function link() {
   const linkValue = prompt("Enter your link:");
