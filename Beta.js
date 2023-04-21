@@ -17,7 +17,7 @@ function link() {
         style.width = style.height = "100%";
         style.top = style.bottom = style.left = style.right = 0;
         iframe.setAttribute('allowFullScreen', '');
-        doc.body.appenChild(iframe);
+        doc.body.appendChild(iframe);
     }  
 }
 
