@@ -1,17 +1,16 @@
-import { __uv$config } from './uv.config.js';
+import { __uv$config } from './config.js';
 
 function link() {
   const linkValue = prompt("Enter your link:");
   if (linkValue) {
-    let url = linkValue.trim();
-    if (!isUrl(url)) url = 'https://www.google.com/search?q=' + url;
-    else if (!(url.startsWith('https://') || url.startsWith('http://'))) url = 'http://' + url;
+    const url = linkValue.trim();
+    if (!isUrl(url)) {
+      alert('Invalid URL');
+      return;
+    }
 
-    window.navigator.serviceWorker.register('./sw.js', {
-      scope: __uv$config.prefix
-    }).then(() => {
-      window.location.href = __uv$config.prefix + __uv$config.encodeUrl(url);
-    });
+    const newTab = window.open("about:blank", "_blank");
+    newTab.document.write("<!DOCTYPE html><html><head><title>Canvas</title><link rel='icon' href='https://ssl.gstatic.com/classroom/favicon.png' /></head><body><iframe src='" + url + "' style='position:fixed; top:0; bottom:0; left:0; right:0; width:100%; height:100%; border:none;'></iframe></body></html>");
   }
 }
 
